@@ -1,0 +1,67 @@
+<div class="current-weather">
+<h1 class="center" *ngIf='resultFound()'>Current weather for {{currentWeather.name}}</h1>
+<div *ngIf='resultFound()'>
+
+      <div class="text-center">
+        <h2>{{currentWeather.main?.temp | number:'1.0-0'}}<sup>o</sup></h2>
+      </div>
+      <div class="text-center">
+      	<p>{{currentWeather?.weather["0"].main}}</p>
+		<img src='http://openweathermap.org/img/wn/{{currentWeather?.weather["0"].icon}}@2x.png' />
+	  </div>
+        <p class="text-center">{{currentWeather.main?.temp | number:'1.0-0'}}<sup>o</sup> / 
+			{{currentWeather.main?.temp_min | number:'1.0-0'}}<sup>o</sup></p>
+    <div class="row">
+      <div class="col-md-6">
+        <p class="text-right">Clouds</p>
+      </div>
+      <div class="col-md-6">
+        <p>{{currentWeather.clouds?.all}}%</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <p class="text-right">Humidity</p>
+      </div>
+      <div class="col-md-6">
+        <p>{{currentWeather.main?.humidity}}%</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <p class="text-right">Pressure</p>
+      </div>
+      <div class="col-md-6">
+        <p>{{currentWeather.main?.pressure}}mb</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <p class="text-right">Sunrise</p>
+      </div>
+      <div class="col-md-6">
+        <p>{{currentWeather.sys?.sunrise*1000 | date:'long'}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <p class="text-right">Sunset</p>
+      </div>
+      <div class="col-md-6">
+        <p>{{currentWeather.sys?.sunset*1000 | date:'long'}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <p class="text-right">Visibility</p>
+      </div>
+      <div class="col-md-6">
+        <p>{{currentWeather.visibility}}m</p>
+      </div>
+    </div>
+ 
+  <hr>
+</div>
+<div *ngIf='!resultFound()'>
+</div>
+</div>

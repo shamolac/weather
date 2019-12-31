@@ -1,0 +1,65 @@
+<div *ngIf='resultFound()' class="forecast">
+  <h1 class="center">Forecast for {{currentWeather.name}}</h1>
+  <div *ngFor='let l of forecast.list' class="forecast-rows">
+    <div>
+      <div>
+        <h3>{{l.dt*1000 | date:'MMM d, y, h:mm a'}}</h3>
+      </div>
+    </div>
+    <div>
+      <div *ngIf='resultFound()'>
+        <div class="table">
+          <div class="row">
+            <div class="col-md-6">Temperature</div>
+            <div class="col-md-6">{{l.main?.temp | number:'1.0-0'}}<sup>o</sup></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">Low Temperature</div>
+            <div class="col-md-6">{{l.main?.temp_min | number:'1.0-0'}}<sup>o</sup></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">High Temperature</div>
+            <div class="col-md-6">{{l.main?.temp_max | number:'1.0-0'}}<sup>o</sup></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">Pressure</div>
+            <div class="col-md-6">{{l.main?.pressure | number:'1.0-0'}}mb</div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">Sea Level</div>
+            <div class="col-md-6">{{l.main?.sea_level | number:'1.0-0'}}m</div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">Ground Level</div>
+            <div class="col-md-6">{{l.main?.grnd_level | number:'1.0-0'}}m</div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">Humidity</div>
+            <div class="col-md-6"> {{l.main?.humidity | number:'1.0-0'}}%</div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">Weather</div>
+            <div class="col-md-6">
+              <ul>
+                <li *ngFor='let w of l.weather'>
+                  {{w.main }}: {{w.description }}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">Wind Speed</div>
+            <div class="col-md-6">{{l.wind?.speed }}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">Wind Direction</div>
+            <div class="col-md-6">{{l.wind?.deg }}<sup>o</sup></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf='!resultFound()'>
+  <h1 class="center">{{msg || 'No location found.'}}</h1>
+</div>

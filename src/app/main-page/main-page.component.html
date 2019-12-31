@@ -1,0 +1,11 @@
+<app-search-bar></app-search-bar>
+<div id='container' class="weather-app">
+    <ul *ngIf='loc'>
+        <li label="Current Weather">
+            <app-current-weather></app-current-weather>
+        </li>
+        <li label="Forecast">
+            <app-forecast></app-forecast>
+        </li>
+    </ul>
+</div>
